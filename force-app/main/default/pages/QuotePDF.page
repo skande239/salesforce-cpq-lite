@@ -1,0 +1,25 @@
+<apex:page standardController="Quote__c" renderAs="pdf" showHeader="false" sidebar="false">
+    <h1>Quote Document</h1>
+    <p><b>Quote Name:</b> <apex:outputField value="{!Quote__c.Name}"/></p>
+    <p><b>Status:</b> <apex:outputField value="{!Quote__c.Status__c}"/></p>
+    <table border="1" cellpadding="6" cellspacing="0" width="100%">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Line Total</th>
+        </tr>
+        <apex:repeat value="{!Quote__c.Quote_Line_Items__r}" var="item">
+            <tr>
+                <td><apex:outputField value="{!item.Product_Name__c}"/></td>
+                <td><apex:outputField value="{!item.Quantity__c}"/></td>
+                <td><apex:outputField value="{!item.Unit_Price__c}"/></td>
+                <td><apex:outputField value="{!item.Line_Total__c}"/></td>
+            </tr>
+        </apex:repeat>
+    </table>
+    <p><b>Subtotal:</b> <apex:outputField value="{!Quote__c.Subtotal__c}"/></p>
+    <p><b>Discount:</b> <apex:outputField value="{!Quote__c.Discount__c}"/>%</p>
+    <p><b>Tax:</b> <apex:outputField value="{!Quote__c.Tax__c}"/>%</p>
+    <p><b>Total Amount:</b> <apex:outputField value="{!Quote__c.Total_Amount__c}"/></p>
+</apex:page>
