@@ -119,7 +119,9 @@ sf project deploy start --source-dir force-app
          ↓
 6. On Approval → PDF generated & emailed automatically
 ```
+## 📊 Dashboard Preview
 
+![Support Ticket Dashboard](screenshots/dashboard.png)
 ---
 
 ## 👨‍💻 Author
