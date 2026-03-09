@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="🎫 Support Ticket Dashboard" icon-name="standard:case">
+        
+        <!-- Summary Cards -->
+        <div class="slds-grid slds-gutters slds-p-around_medium">
+            <div class="slds-col">
+                <div class="slds-box slds-theme_default slds-text-align_center">
+                    <p class="slds-text-heading_large">{totalTickets}</p>
+                    <p class="slds-text-body_regular">Total Tickets</p>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-box slds-theme_warning slds-text-align_center">
+                    <p class="slds-text-heading_large">{openTickets}</p>
+                    <p class="slds-text-body_regular">Open Tickets</p>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-box slds-theme_error slds-text-align_center">
+                    <p class="slds-text-heading_large">{escalatedTickets}</p>
+                    <p class="slds-text-body_regular">Escalated</p>
+                </div>
+            </div>
+            <div class="slds-col">
+                <div class="slds-box slds-theme_success slds-text-align_center">
+                    <p class="slds-text-heading_large">{closedTickets}</p>
+                    <p class="slds-text-body_regular">Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tickets Table -->
+        <div class="slds-p-around_medium">
+            <template if:true={tickets.data}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th>Ticket Number</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={tickets.data} for:item="ticket">
+                            <tr key={ticket.Id}>
+                                <td>{ticket.Name}</td>
+                                <td>{ticket.Subject__c}</td>
+                                <td>{ticket.Status__c}</td>
+                                <td>{ticket.Priority__c}</td>
+                                <td>{ticket.Category__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template if:true={tickets.error}>
+                <p class="slds-text-color_error">Error loading tickets.</p>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>
